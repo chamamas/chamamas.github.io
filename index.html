@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,61 +9,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <!-- <script src="main.js"></script> -->
-     <script src="quiz.json"></script>
-     <script src="jquery-3.3.1.min.js" charset="utf-8"></script>
-     <script src="AppGame.js"></script>
+    <script src="quiz.json"></script>
+    <script src="jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="AppGame.js"></script>
 
 </head>
-    <header class="header"><h1>Quiz Game</h1>
-        <h1>General knowledge</h1>
-    </header>
+<header class="header">
+    <h1>Quiz Game</h1>
+    <h1>General knowledge</h1>
+</header>
 
 
 <body>
     <div id="container">
-      <div class="block-button">
-    <p>
-      <button class="start" style> Start </button>
-      <button class="ten">10 ข้อ</button>
-      <button class="twenty">20 ข้อ</button>
-    </p>
-    <p>
-      <button class="how-to"> How to play </button>
-      <div id="detailHow" class="textHow">
-      <center>Read the question and choose the correct answer before time out.</center>
-      </div>
-    </p>
-    <p>
-      <button class="about"> About </button>
-      <div id="detailGame" class="textAbout">
-      <center>Created by</center>
-      <br>
-      <center>Chamamas Khamput</center>
-      <br>
-      <center>5810450202 sec 200</center>
-      </div>
-    </P>
+        <div class="block-button">
+            <p>
+                <button class="start" style> Start </button>
+                <button class="ten">10 ข้อ</button>
+                <button class="twenty">20 ข้อ</button>
+            </p>
+            <p>
+                <button class="how-to"> How to play </button>
+                <div id="detailHow" class="textHow">
+                    <center>Read the question and choose the correct answer before time out.</center>
+                </div>
+            </p>
+            <p>
+                <button class="about"> About </button>
+                <div id="detailGame" class="textAbout">
+                    <center>Created by</center>
+                    <br>
+                    <center>Chamamas Khamput</center>
+                    <br>
+                    <center>5810450202 sec 200</center>
+                </div>
+            </P>
+        </div>
     </div>
-  </div>
-  <div class="block-display">
-      <div class="options">
-          <p class="gameNo"></p>
-          <p class="timer"></p>
-          <p class="total-timer"></p>
-          <p class="score"></p>
-      </div>
-      <div class="images">
-          <img class="image">
-      </div>
-  </div>
-  <div class="block-choice">
-      <div class="question"></div>
-      <button class="choice1"></button>
-      <button class="choice2"></button>
-      <br>
-      <button class="choice3"></button>
-      <button class="choice4"></button>
-  </div>
+    <div class="block-display">
+        <div class="options">
+            <p class="numberGame"></p>
+            <p class="timer"></p>
+            <p class="timeToPlay"></p>
+            <p class="coutScore"></p>
+        </div>
+        <div class="images">
+            <img class="image">
+        </div>
+    </div>
+    <div class="block-choice">
+        <div class="question"></div>
+        <button class="choice1"></button>
+        <button class="choice2"></button>
+        <br>
+        <button class="choice3"></button>
+        <button class="choice4"></button>
+    </div>
 
 
 
@@ -70,76 +72,64 @@
 
 
     <script>
-           $(".how-many").hide();
-    			 $(".block-choice").hide();
-    			 $(".ten").hide();
-    			 $(".twenty").hide();
-    			 $(".back").hide();
-    			 $(".block-display").hide();
-    			 $(".exit").hide();
-    			 $(".image").hide();
-    			 $(".toggle").hide();
-    			 $(".summary").hide();
-    			 $(".textHow").hide();
-    			 $(".textAbout").hide();
-           var myQuestion = list;
-           var listQuestion = [];
-           var answer;
-           var totalTime = 0;
-           var score = 0;
-           var gameNo = 0;
-           var sumGameNo = 1;
-           var timer = 60;
-           var running;
-           var linkImage;
-           var sourceImage;
+        $(".how-many").hide();
+        $(".block-choice").hide();
+        $(".ten").hide();
+        $(".twenty").hide();
+        $(".back").hide();
+        $(".block-display").hide();
+        $(".exit").hide();
+        $(".image").hide();
+        $(".toggle").hide();
+        $(".summary").hide();
+        $(".textHow").hide();
+        $(".textAbout").hide();
+        var mySumQuestion = list;
+        var listQuestion = [];
+        var answer;
+        var timeToPlay = 0;
+        var coutScore = 0;
+        var numberGame = 0;
+        var sumGameNo = 1;
+        var timer = 60;
+        var running;
+        var linkImage;
 
 
 
-    			 // $(document).ready(function () {
-    				// 	 $.ajax({
-    				// 			 url: "quiz.json",
-    				// 			 method: "GET",
-    				// 			 dataType: "json",
-    				// 			 success: function (responce) {
-    				// 					 questionArray = responce;
-    				// 			 }
-    				// 	 })
-    			 // });
+        $(document).ready(function () {
+            $(".start").click(function () {
+                $(".start").hide();
+                $(".how-to").hide();
+                $(".about").hide();
+                $(".name").hide();
+                $(".how-many").show();
+                $(".ten").show();
+                $(".twenty").show();
+                $(".thirty").show();
+                $(".back").show();
 
-           $(document).ready(function () {
-                    $(".start").click(function () {
-                    $(".start").hide();
-                    $(".how-to").hide();
-                    $(".about").hide();
-                    $(".name").hide();
-                    $(".how-many").show();
-                    $(".ten").show();
-                    $(".twenty").show();
-                    $(".thirty").show();
-                    $(".back").show();
-
-                });
             });
-            $(document).ready(function () {
-                $(".how-to").click(function () {
+        });
+        $(document).ready(function () {
+            $(".how-to").click(function () {
                 $(".start").hide();
                 $(".how-to").hide();
                 $(".about").hide();
                 $(".back").show();
                 $(".textHow").show();
             });
+        });
+        $(document).ready(function () {
+            $(".about").click(function () {
+                $(".start").hide();
+                $(".how-to").hide();
+                $(".about").hide();
+                $(".back").show();
+                $(".textAbout").show();
             });
-            $(document).ready(function () {
-                    $(".about").click(function () {
-                    $(".start").hide();
-                    $(".how-to").hide();
-                    $(".about").hide();
-                    $(".back").show();
-                    $(".textAbout").show();
-                  });
-            });
-            $(document).ready(function () {
+        });
+        $(document).ready(function () {
             $(".ten").click(function () {
                 $(".block-button").hide();
                 $(".timer").show();
@@ -147,167 +137,151 @@
                 $(".block-choice").show();
                 $(".exit").show();
                 $(".image").show();
-                gameNo = 10;
+                numberGame = 10;
                 setQuestion();
-                $(".gameNo").html("ข้อที่: " + sumGameNo + "/" + gameNo);
-                startTimer();
+                $(".numberGame").html("No: " + sumGameNo + "/" + numberGame);
+                startGame();
                 setTimer();
 
             });
         });
 
-            $(document).ready(function () {
+        $(document).ready(function () {
             $(".twenty").click(function () {
                 $(".block-button").hide();
                 $(".timer").show();
                 $(".block-display").show();
                 $(".block-choice").show();
-                $(".exit").show();
                 $(".image").show();
-                gameNo = 20;
+                numberGame = 20;
                 setQuestion();
-                $(".gameNo").html("ข้อที่: " + sumGameNo + "/" + gameNo);
-                startTimer();
+                $(".numberGame").html("No: " + sumGameNo + "/" + numberGame);
+                startGame();
                 setTimer();
             });
         });
         $(document).ready(function () {
-           $(".choice1").click(function () {
-               if (checkAnswer($(".choice1").text())) {
-                   score++;
-               }
-               setNextQuestion();
-           });
-       });
-
-         $(document).ready(function () {
-             $(".choice2").click(function () {
-                 if (checkAnswer($(".choice2").text())) {
-                     score++;
-                 }
-                 setNextQuestion();
-             });
-         });
-
-       $(document).ready(function () {
-           $(".choice3").click(function () {
-               if (checkAnswer($(".choice3").text())) {
-                   score++;
-               }
-               setNextQuestion();
-           });
-       });
-
-       $(document).ready(function () {
-           $(".choice4").click(function () {
-               if (checkAnswer($(".choice4").text())) {
-                   score++;
-               }
-               setNextQuestion();
-           });
-       });
-       function setQuestion() {
-                console.log(myQuestion);
-           while (true) {
-               let number = Math.floor(Math.random() * 20);
-               let no = myQuestion[number].no;
-               if (listQuestion.indexOf(no) == -1)
-               {
-                   listQuestion.push(no);
-                   console.log(listQuestion);
-                   let question = myQuestion[number].question;
-                   answer = myQuestion[number].answer;
-                   linkImage = myQuestion[number].image;
-                   let choice1 = myQuestion[number].choice1;
-                   let choice2 = myQuestion[number].choice2;
-                   let choice3 = myQuestion[number].choice3;
-                   let choice4 = myQuestion[number].choice4;
-                   $(".question").html(question);
-                   $(".choice1").html(choice1);
-                   $(".choice2").html(choice2);
-                   $(".choice3").html(choice3);
-                   $(".choice4").html(choice4);
-                   if (linkImage != undefined) {
-                       $(".image").attr("src", linkImage);
-                       $(".image").show();
-                       $(".sourceImage").html(sourceImage);
-                       $(".sourceImage").show();
-                   }
-                   else {
-                       $(".image").attr("src", null);
-                       $(".image").hide();
-                       $(".sourceImage").hide();
-                        }
-                   break;
+            $(".choice1").click(function () {
+                if (trueAnswer($(".choice1").text())) {
+                    coutScore++;
                 }
-               }
-             }
-function checkAnswer(choice) {
-        if (answer == choice) {
-          return true;
-        }
-          return false;
-        }
-function setTimer() {
-        timer = timer - 1;
-        $(".timer").html("time: " + timer + "sec");
-           if (running) {
-               setTimeout(setTimer, 1000);
-        }
-           if (timer < 0) {
-               setNextQuestion();
-           }
-        }
-function startTimer() {
-       running = true;
-       }
-function stopTimer() {
-           running = false;
-           timer = 60;
-         }
-function setNextQuestion() {
-         sumGameNo++;
-         $(".gameNo").html("No: " + sumGameNo + "/" + gameNo);
-         if (sumGameNo > gameNo) {
-              stopTimer();
-              $(".block-choice").hide();
-              $(".image").hide();
-              $(".sourceImage").hide();
-              $(".timer").hide();
-              $(".total-timer").show();
-              $(".gameNo").html("No: " + gameNo + "/" + gameNo);
-              $(".score").html("Score: " + score + "/" + gameNo);
-              $(".score").show();
-              $(".toggle").show();
-              showAnswer();
-              $(".total-timer").html("totalTime: " + Math.floor(totalTime / 60) + " minute " + totalTime % 60 + " sec");
-           }
-           else {
-              setQuestion();
-              totalTime = totalTime + (60 - timer);
-              stopTimer();
-              setTimer();
-              startTimer();
-           }
-       }
+                newQuiz();
+            });
+        });
+
         $(document).ready(function () {
-        $("#show").click(function () {
-            if ($(".summary").is(":visible")) {
-                $(".summary").hide();
-               }
-            else {
-                $(".summary").show();
-               }
-           });
-       });
-function showAnswer() {
-    var strings = "";
-    for (let i of sumQuestionArray) {
-        strings = strings + "คำถาม: " + questionArray[i - 1].question +
-        " <br> เฉลย " + questionArray[i - 1].answer + " <br><br>";
-        $(".question-summary").html(strings);
+            $(".choice2").click(function () {
+                if (trueAnswer($(".choice2").text())) {
+                    coutScore++;
+                }
+                newQuiz();
+            });
+        });
+
+        $(document).ready(function () {
+            $(".choice3").click(function () {
+                if (trueAnswer($(".choice3").text())) {
+                    coutScore++;
+                }
+                newQuiz();
+            });
+        });
+
+        $(document).ready(function () {
+            $(".choice4").click(function () {
+                if (trueAnswer($(".choice4").text())) {
+                    coutScore++;
+                }
+                newQuiz();
+            });
+        });
+        function setQuestion() {
+            console.log(mySumQuestion);
+            while (true) {
+                let number = Math.floor(Math.random() * 20);
+                let no = mySumQuestion[number].no;
+                if (listQuestion.indexOf(no) == -1) {
+                    listQuestion.push(no);
+                    console.log(listQuestion);
+                    let question = mySumQuestion[number].question;
+                    answer = mySumQuestion[number].answer;
+                    linkImage = mySumQuestion[number].image;
+                    let choice1 = mySumQuestion[number].choice1;
+                    let choice2 = mySumQuestion[number].choice2;
+                    let choice3 = mySumQuestion[number].choice3;
+                    let choice4 = mySumQuestion[number].choice4;
+                    $(".question").html(question);
+                    $(".choice1").html(choice1);
+                    $(".choice2").html(choice2);
+                    $(".choice3").html(choice3);
+                    $(".choice4").html(choice4);
+                    if (linkImage != undefined) {
+                        $(".image").attr("src", linkImage);
+                        $(".image").show();
+                    }
+
+                    break;
+                }
+            }
         }
-       }
+        function trueAnswer(choice) {
+            if (answer == choice) {
+                return true;
+            }
+            return false;
+        }
+        function setTimer() {
+            timer = timer - 1;
+            $(".timer").html("time: " + timer + " sec");
+            if (running) {
+                setTimeout(setTimer, 1000);
+            }
+            if (timer < 0) {
+                newQuiz();
+            }
+        }
+        function startGame() {
+            running = true;
+        }
+        function stopTimer() {
+            running = false;
+            timer = 60;
+        }
+        function newQuiz() {
+            sumGameNo++;
+            $(".numberGame").html("No: " + sumGameNo + "/" + numberGame);
+            if (sumGameNo > numberGame) {
+                stopTimer();
+                $(".block-choice").hide();
+                $(".image").hide();
+                $(".timer").hide();
+                $(".timeToPlay").show();
+                $(".numberGame").html("No: " + numberGame + "/" + numberGame);
+                $(".coutScore").html("Score: " + coutScore + "/" + numberGame);
+                $(".coutScore").show();
+                $(".toggle").show();
+                showAnswer();
+                $(".timeToPlay").html("timeToPlay: " + Math.floor(timeToPlay / 60) + " minute " + timeToPlay % 60 + " sec");
+            }
+            else {
+                setQuestion();
+                timeToPlay = timeToPlay + (60 - timer);
+                stopTimer();
+                setTimer();
+                startGame();
+            }
+        }
+        $(document).ready(function () {
+            $("#show").click(function () {
+                if ($(".summary").is(":visible")) {
+                    $(".summary").hide();
+                }
+                else {
+                    $(".summary").show();
+                }
+            });
+        });
+
 
 
 
@@ -316,4 +290,5 @@ function showAnswer() {
 
 
 </body>
+
 </html>
