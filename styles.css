@@ -1,20 +1,92 @@
-.ttt-header {
-    text-align: center;
-    font-size: 40px;
-    padding: 10px 0;
-    font-family: 'Damion', cursive;
-    border-bottom: 1px solid #98e58e;
-  }
-  #container {
-	max-width: 600px;
+body {padding: 0 0 0 0;}
+    .header {
+        padding: 10px 10px 10px 10px;
+        background-color: green;
+    }
+    .header a {
+        color:white;
+    }
+    h1 {
+        font-family: 'Berkshire Swash', cursive;
+        color:white;
+        text-align: center;
+    }
+
+
+#container {
+    max-width: 500px;
     margin: 0 auto;
-}
-.square {
+    }
+button {
+  font-family: 'Berkshire Swash', cursive;
 	width: 70%;
 	background: greenyellow;
-	padding-bottom: 20%;
-	margin: 1.66%;
+	padding: 3%;
+	margin: 4%;
 	border-radius: 40px;
-	float: left;
+  color: white;
+  font-size: 28px;
 	transition: background 0.5s;
+  align-items: flex-start;
+  text-align: center;
+}
+#detailGame{
+    position: relative;
+    width: 500px;
+    font-size: 25px;
+    top: 10px;
+    color:white;
+}
+
+.textAbout {
+    border: 3px solid black;
+    border-width: 14px;
+    border-style: ridge;
+    border-color: Chartreuse;
+    position: relative;
+    padding: 30px;
+    top: -170px;
+    width: 300px;
+    height: 200px;
+    font-size: 25px;
+    margin-left: 30px;
+    overflow-wrap: break-word;
+    background-color: greenyellow;
+    align-items: center;
+    justify-content: center;}
+.block-choice{
+    border: 20px;
+    text-align: center;
+    display: block;
+    padding: 2%;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    height: 50%;
+}
+
+.question {
+    background-color: greenyellow;
+    font-size: 50px;
+    color: white;
+    padding: 5%;
+    border: 25px;
+    text-align: center;
+    display: block;
+}
+.block-choice>Button {
+    width: 37%;
+    margin: 1%;
+}
+button:hover {
+    background-color: #66ff66;
+}
+button {
+    background-color: greenyellow;
+    width: 250px;
+    height: 100px;
+    color: white;
+    font-size: 28px;
+    padding: 2%;
 }

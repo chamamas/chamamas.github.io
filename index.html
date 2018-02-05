@@ -6,20 +6,310 @@
     <title>Page Title</title>
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <!-- <script src="main.js"></script> -->
+     <script src="quiz.json"></script>
+     <script src="jquery-3.3.1.min.js" charset="utf-8"></script>
+     <script src="AppGame.js"></script>
+
 </head>
-<header class="ttt-header">Quiz Game</header>
+    <header class="header"><h1>Quiz Game</h1>
+        <h1>General knowledge</h1>
+    </header>
+
+
 <body>
     <div id="container">
-      <div><button class="square" onclick="myButton()">choice1</button></div>
-      <div><button class="square" onclick="myButton()">choice2</button></div>
-      <div><button class="square" onclick="myButton()">choice3</button></div>
-      <div><button class="square" onclick="myButton()">choice4</button></div>
+      <div class="block-button">
+    <p>
+      <button class="start" style> Start </button>
+      <button class="ten">10 ข้อ</button>
+      <button class="twenty">20 ข้อ</button>
+    </p>
+    <p>
+      <button class="start"> How to play </button>
+    </p>
+    <p>
+      <button class="about"> About </button>
+      <div id="detailGame" class="textAbout">
+      <center>Created by</center>
+      <br>
+      <center>Chamamas Khamput</center>
+      <br>
+      <center>5810450202 sec 200</center>
       </div>
-      
-    <script src="AppGame.js"></script>
-    <script src="AppGame2.js"></script>
+    </P>
+    </div>
+  </div>
+  <div class="block-display">
+      <div class="options">
+          <p class="gameNo"></p>
+          <p class="timer"></p>
+          <p class="total-timer"></p>
+          <p class="score"></p>
+      </div>
+      <div class="images">
+          <img class="image">
+      </div>
+  </div>
+  <div class="block-choice">
+      <div class="question"></div>
+      <button class="choice1"></button>
+      <button class="choice2"></button>
+      <br>
+      <button class="choice3"></button>
+      <button class="choice4"></button>
+  </div>
+
+
+
+
+
+
+    <script>
+           $(".how-many").hide();
+    			 $(".block-choice").hide();
+    			 $(".ten").hide();
+    			 $(".twenty").hide();
+    			 $(".back").hide();
+    			 $(".block-display").hide();
+    			 $(".exit").hide();
+    			 $(".image").hide();
+    			 $(".toggle").hide();
+    			 $(".summary").hide();
+    			 $(".how-detail").hide();
+    			 $(".textAbout").hide();
+           var questionArray = list;
+           var sumQuestionArray = [];
+           var answer;
+           var totalTime = 0;
+           var score = 0;
+           var gameNo = 0;
+           var sumGameNo = 1;
+           var timer = 60;
+           var running;
+           var linkImage;
+           var sourceImage;
+
+
+
+    			 // $(document).ready(function () {
+    				// 	 $.ajax({
+    				// 			 url: "quiz.json",
+    				// 			 method: "GET",
+    				// 			 dataType: "json",
+    				// 			 success: function (responce) {
+    				// 					 questionArray = responce;
+    				// 			 }
+    				// 	 })
+    			 // });
+
+           $(document).ready(function () {
+                    $(".start").click(function () {
+                    $(".start").hide();
+                    $(".how-to").hide();
+                    $(".about").hide();
+                    $(".name").hide();
+                    $(".how-many").show();
+                    $(".ten").show();
+                    $(".twenty").show();
+                    $(".thirty").show();
+                    $(".back").show();
+
+                });
+            });
+            $(document).ready(function () {
+            $(".how-to").click(function () {
+                $(".start").hide();
+                $(".how-to").hide();
+                $(".about").hide();
+                $(".back").show();
+                $(".how-detail").show();
+            });
+            });
+            $(document).ready(function () {
+                    $(".about").click(function () {
+                    $(".start").hide();
+                    $(".how-to").hide();
+                    $(".about").hide();
+                    $(".back").show();
+                    $(".textAbout").show();
+                  });
+            });
+            $(document).ready(function () {
+            $(".ten").click(function () {
+                $(".block-button").hide();
+                $(".timer").show();
+                $(".block-display").show();
+                $(".block-choice").show();
+                $(".exit").show();
+                $(".image").show();
+                gameNo = 10;
+                setQuestion();
+                $(".gameNo").html("ข้อที่: " + sumGameNo + "/" + gameNo);
+                startTimer();
+                setTimer();
+
+            });
+        });
+
+            $(document).ready(function () {
+            $(".twenty").click(function () {
+                $(".block-button").hide();
+                $(".timer").show();
+                $(".block-display").show();
+                $(".block-choice").show();
+                $(".exit").show();
+                $(".image").show();
+                gameNo = 20;
+                setQuestion();
+                $(".gameNo").html("ข้อที่: " + sumGameNo + "/" + gameNo);
+                startTimer();
+                setTimer();
+            });
+        });
+        $(document).ready(function () {
+           $(".choice1").click(function () {
+               if (checkAnswer($(".choice1").text())) {
+                   score++;
+               }
+               setNextQuestion();
+           });
+       });
+
+         $(document).ready(function () {
+             $(".choice2").click(function () {
+                 if (checkAnswer($(".choice2").text())) {
+                     score++;
+                 }
+                 setNextQuestion();
+             });
+         });
+
+       $(document).ready(function () {
+           $(".choice3").click(function () {
+               if (checkAnswer($(".choice3").text())) {
+                   score++;
+               }
+               setNextQuestion();
+           });
+       });
+
+       $(document).ready(function () {
+           $(".choice4").click(function () {
+               if (checkAnswer($(".choice4").text())) {
+                   score++;
+               }
+               setNextQuestion();
+           });
+       });
+       function setQuestion() {
+                console.log(questionArray);
+           while (true) {
+               let number = Math.floor(Math.random() * 20);
+               let no = questionArray[number].no;
+               if (sumQuestionArray.indexOf(no) == -1)
+               {
+                   sumQuestionArray.push(no);
+                   console.log(sumQuestionArray);
+                   let question = questionArray[number].question;
+                   answer = questionArray[number].answer;
+                   linkImage = questionArray[number].image;
+                   let choice1 = questionArray[number].choice1;
+                   let choice2 = questionArray[number].choice2;
+                   let choice3 = questionArray[number].choice3;
+                   let choice4 = questionArray[number].choice4;
+                   $(".question").html(question);
+                   $(".choice1").html(choice1);
+                   $(".choice2").html(choice2);
+                   $(".choice3").html(choice3);
+                   $(".choice4").html(choice4);
+                   if (linkImage != undefined) {
+                       $(".image").attr("src", linkImage);
+                       $(".image").show();
+                       $(".sourceImage").html(sourceImage);
+                       $(".sourceImage").show();
+                   }
+                   else {
+                       $(".image").attr("src", null);
+                       $(".image").hide();
+                       $(".sourceImage").hide();
+                        }
+                   break;
+                }
+               }
+             }
+function checkAnswer(choice) {
+        if (answer == choice) {
+          return true;
+        }
+          return false;
+        }
+function setTimer() {
+        timer = timer - 1;
+        $(".timer").html("เวลา: " + timer + " วินาที");
+           if (running) {
+               setTimeout(setTimer, 1000);
+        }
+           if (timer < 0) {
+               setNextQuestion();
+           }
+        }
+function startTimer() {
+       running = true;
+       }
+function stopTimer() {
+           running = false;
+           timer = 60;
+         }
+function setNextQuestion() {
+         sumGameNo++;
+         $(".gameNo").html("ข้อที่: " + sumGameNo + "/" + gameNo);
+         if (sumGameNo > gameNo) {
+              stopTimer();
+              $(".block-choice").hide();
+              $(".image").hide();
+              $(".sourceImage").hide();
+              $(".timer").hide();
+              $(".total-timer").show();
+              $(".gameNo").html("ข้อที่: " + gameNo + "/" + gameNo);
+              $(".score").html("คะแนน: " + score + "/" + gameNo);
+              $(".score").show();
+              $(".toggle").show();
+              showAnswer();
+              $(".total-timer").html("เวลาทั้งหมด: " + Math.floor(totalTime / 60) + " นาที " + totalTime % 60 + " วินาที");
+           }
+           else {
+              setQuestion();
+              totalTime = totalTime + (60 - timer);
+              stopTimer();
+              setTimer();
+              startTimer();
+           }
+       }
+        $(document).ready(function () {
+        $("#show").click(function () {
+            if ($(".summary").is(":visible")) {
+                $(".summary").hide();
+               }
+            else {
+                $(".summary").show();
+               }
+           });
+       });
+function showAnswer() {
+    var strings = "";
+    for (let i of sumQuestionArray) {
+        strings = strings + "คำถาม: " + questionArray[i - 1].question +
+        " <br> เฉลย " + questionArray[i - 1].answer + " <br><br>";
+        $(".question-summary").html(strings);
+        }
+       }
+
+
+
+    </script>
+
 
 
 </body>
