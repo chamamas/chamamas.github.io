@@ -38,7 +38,30 @@ button {
     color:white;
 }
 
+#detailHow{
+    position: relative;
+    width: 500px;
+    font-size: 25px;
+    top: 10px;
+    color:white;
+}
 .textAbout {
+    border: 3px solid black;
+    border-width: 14px;
+    border-style: ridge;
+    border-color: Chartreuse;
+    position: relative;
+    padding: 30px;
+    top: -170px;
+    width: 300px;
+    height: 200px;
+    font-size: 25px;
+    margin-left: 30px;
+    overflow-wrap: break-word;
+    background-color: greenyellow;
+    align-items: center;
+    justify-content: center;}
+.textHow {
     border: 3px solid black;
     border-width: 14px;
     border-style: ridge;
