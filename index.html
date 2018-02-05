@@ -25,8 +25,8 @@
         <div class="block-button">
             <p>
                 <button class="start" style> Start </button>
-                <button class="ten">10 ข้อ</button>
-                <button class="twenty">20 ข้อ</button>
+                <button class="questionType1">10 ข้อ</button>
+                <button class="questionType2">20 ข้อ</button>
             </p>
             <p>
                 <button class="how-to"> How to play </button>
@@ -66,16 +66,11 @@
         <button class="choice4"></button>
     </div>
 
-
-
-
-
-
     <script>
         $(".how-many").hide();
         $(".block-choice").hide();
-        $(".ten").hide();
-        $(".twenty").hide();
+        $(".questionType1").hide();
+        $(".questionType2").hide();
         $(".back").hide();
         $(".block-display").hide();
         $(".exit").hide();
@@ -93,9 +88,7 @@
         var sumGameNo = 1;
         var timer = 60;
         var running;
-        var linkImage;
-
-
+        var myPicture;
 
         $(document).ready(function () {
             $(".start").click(function () {
@@ -104,8 +97,8 @@
                 $(".about").hide();
                 $(".name").hide();
                 $(".how-many").show();
-                $(".ten").show();
-                $(".twenty").show();
+                $(".questionType1").show();
+                $(".questionType2").show();
                 $(".thirty").show();
                 $(".back").show();
 
@@ -130,7 +123,7 @@
             });
         });
         $(document).ready(function () {
-            $(".ten").click(function () {
+            $(".questionType1").click(function () {
                 $(".block-button").hide();
                 $(".timer").show();
                 $(".block-display").show();
@@ -147,7 +140,7 @@
         });
 
         $(document).ready(function () {
-            $(".twenty").click(function () {
+            $(".questionType2").click(function () {
                 $(".block-button").hide();
                 $(".timer").show();
                 $(".block-display").show();
@@ -205,7 +198,7 @@
                     console.log(listQuestion);
                     let question = mySumQuestion[number].question;
                     answer = mySumQuestion[number].answer;
-                    linkImage = mySumQuestion[number].image;
+                    myPicture = mySumQuestion[number].image;
                     let choice1 = mySumQuestion[number].choice1;
                     let choice2 = mySumQuestion[number].choice2;
                     let choice3 = mySumQuestion[number].choice3;
@@ -215,8 +208,8 @@
                     $(".choice2").html(choice2);
                     $(".choice3").html(choice3);
                     $(".choice4").html(choice4);
-                    if (linkImage != undefined) {
-                        $(".image").attr("src", linkImage);
+                    if (myPicture != undefined) {
+                        $(".image").attr("src", myPicture);
                         $(".image").show();
                     }
 

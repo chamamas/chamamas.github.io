@@ -1,4 +1,4 @@
-body {padding: 0 0 0 0;}
+body {background:  #99ff99; padding: 0 0 0 0;}
     .header {
         padding: 10px 10px 10px 10px;
         background-color: green;
@@ -11,6 +11,7 @@ body {padding: 0 0 0 0;}
         color:white;
         text-align: center;
     }
+
 
 
 #container {
