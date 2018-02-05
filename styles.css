@@ -90,3 +90,11 @@ button {
     font-size: 28px;
     padding: 2%;
 }
+
+.images {
+  text-align: center;
+}
+
+.image {
+  max-height: 300px;
+}
