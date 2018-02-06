@@ -46,10 +46,10 @@
             </P>
         </div>
     </div>
-    <div class="block-display">
+    <div class="playerGame">
         <div class="options">
             <p class="numberGame"></p>
-            <p class="timer"></p>
+            <p class="localTime"></p>
             <p class="timeToPlay"></p>
             <p class="coutScore"></p>
         </div>
@@ -67,16 +67,13 @@
     </div>
 
     <script>
-        $(".how-many").hide();
+        $(".questionType").hide();
         $(".block-choice").hide();
         $(".questionType1").hide();
         $(".questionType2").hide();
         $(".back").hide();
-        $(".block-display").hide();
-        $(".exit").hide();
+        $(".playerGame").hide();
         $(".image").hide();
-        $(".toggle").hide();
-        $(".summary").hide();
         $(".textHow").hide();
         $(".textAbout").hide();
         var mySumQuestion = list;
@@ -86,7 +83,7 @@
         var coutScore = 0;
         var numberGame = 0;
         var sumGameNo = 1;
-        var timer = 60;
+        var localTime = 60;
         var beginTime
         ;
         var myPicture;
@@ -97,10 +94,8 @@
                 $(".how-to").hide();
                 $(".about").hide();
                 $(".name").hide();
-                $(".how-many").show();
                 $(".questionType1").show();
                 $(".questionType2").show();
-                $(".thirty").show();
                 $(".back").show();
 
             });
@@ -110,7 +105,6 @@
                 $(".start").hide();
                 $(".how-to").hide();
                 $(".about").hide();
-                $(".back").show();
                 $(".textHow").show();
             });
         });
@@ -119,15 +113,14 @@
                 $(".start").hide();
                 $(".how-to").hide();
                 $(".about").hide();
-                $(".back").show();
                 $(".textAbout").show();
             });
         });
         $(document).ready(function () {
             $(".questionType1").click(function () {
                 $(".block-button").hide();
-                $(".timer").show();
-                $(".block-display").show();
+                $(".localTime").show();
+                $(".playerGame").show();
                 $(".block-choice").show();
                 $(".exit").show();
                 $(".image").show();
@@ -143,8 +136,8 @@
         $(document).ready(function () {
             $(".questionType2").click(function () {
                 $(".block-button").hide();
-                $(".timer").show();
-                $(".block-display").show();
+                $(".localTime").show();
+                $(".playerGame").show();
                 $(".block-choice").show();
                 $(".image").show();
                 numberGame = 20;
@@ -225,12 +218,12 @@
             return false;
         }
         function setTimer() {
-            timer = timer - 1;
-            $(".timer").html("time: " + timer + " sec");
+            localTime = localTime - 1;
+            $(".localTime").html("time: " + localTime + " sec");
             if (beginTime) {
                 setTimeout(setTimer, 1000);
             }
-            if (timer < 0) {
+            if (localTime < 0) {
                 newQuiz();
             }
         }
@@ -241,7 +234,7 @@
         function stopTimer() {
             beginTime
              = false;
-            timer = 60;
+            localTime = 60;
         }
         function newQuiz() {
             sumGameNo++;
@@ -250,17 +243,17 @@
                 stopTimer();
                 $(".block-choice").hide();
                 $(".image").hide();
-                $(".timer").hide();
+                $(".localTime").hide();
                 $(".timeToPlay").show();
                 $(".numberGame").html("No: " + numberGame + "/" + numberGame);
                 $(".coutScore").html("Score: " + coutScore + " score");
                 $(".coutScore").show();
                 $(".toggle").show();
-                $(".timeToPlay").html("timeToPlay: " + Math.floor(timeToPlay / 60) + " minute " + timeToPlay % 60 + " sec");
+                $(".timeToPlay").html("Time: " + Math.floor(timeToPlay / 60) + " minute " + timeToPlay % 60 + " sec");
             }
             else {
                 setQuestion();
-                timeToPlay = timeToPlay + (60 - timer);
+                timeToPlay = timeToPlay + (60 - localTime);
                 stopTimer();
                 setTimer();
                 startGame();
