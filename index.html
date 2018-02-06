@@ -87,7 +87,8 @@
         var numberGame = 0;
         var sumGameNo = 1;
         var timer = 60;
-        var running;
+        var beginTime
+        ;
         var myPicture;
 
         $(document).ready(function () {
@@ -226,7 +227,7 @@
         function setTimer() {
             timer = timer - 1;
             $(".timer").html("time: " + timer + " sec");
-            if (running) {
+            if (beginTime) {
                 setTimeout(setTimer, 1000);
             }
             if (timer < 0) {
@@ -234,15 +235,17 @@
             }
         }
         function startGame() {
-            running = true;
+            beginTime
+             = true;
         }
         function stopTimer() {
-            running = false;
+            beginTime
+             = false;
             timer = 60;
         }
         function newQuiz() {
             sumGameNo++;
-            $(".numberGame").html("No: " + sumGameNo + "/" + numberGame);
+            $(".numberGame").html("No: " + sumGameNo );
             if (sumGameNo > numberGame) {
                 stopTimer();
                 $(".block-choice").hide();
@@ -250,10 +253,9 @@
                 $(".timer").hide();
                 $(".timeToPlay").show();
                 $(".numberGame").html("No: " + numberGame + "/" + numberGame);
-                $(".coutScore").html("Score: " + coutScore + "/" + numberGame);
+                $(".coutScore").html("Score: " + coutScore + " score");
                 $(".coutScore").show();
                 $(".toggle").show();
-                showAnswer();
                 $(".timeToPlay").html("timeToPlay: " + Math.floor(timeToPlay / 60) + " minute " + timeToPlay % 60 + " sec");
             }
             else {
